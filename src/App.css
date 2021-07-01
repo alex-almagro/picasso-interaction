@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+/* custom styles */
+button {
+  margin: 0;
+  outline: none;
+  padding: 15px;
+  font-size: 16px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid darkslategrey;
+  color: darkslategrey;
+  cursor: pointer;
+  transition: color 0.5s ease, background-color 0.5s ease;
+  margin-right: 15px;
+}
+button:hover {
+  background-color: darkslategrey;
+  color: white;
+}
+button:disabled {
+  background-color: darkslategrey;
+  color: white;
+  cursor: default;
+}
