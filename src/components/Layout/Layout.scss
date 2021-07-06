@@ -1,7 +1,15 @@
-#rangeBrushing,
-#lassoBrushing {
-  height: 500px;
-  position: relative;
-  margin: 50px;
-  margin-bottom: 20px;
+.wrapper {
+  margin: 15px 0;
+
+  .exampleWrapper {
+      margin: 30px 0;
+  }
+
+  #rangeBrushing,
+  #lassoBrushing {
+    height: 500px;
+    position: relative;
+    margin: 50px;
+    margin-bottom: 20px;
+  }
 }

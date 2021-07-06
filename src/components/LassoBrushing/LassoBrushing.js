@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import picasso from "picasso.js";
-import { getInteractions, scales, components } from "./settings";
+import { interactions, scales, components } from "./settings";
 
-const RangeBrushing = (props) => {
+const LassoBrushing = (props) => {
   // we save the chart in the state to avoid re-rendering
   const [chart, setChart] = useState(null);
 
   const getData = () => {
-    const arr = [["Product", "Sales"]];
-    const [min, max] = [100, 800];
-    for (let i = 0; i < 26; i++) {
+    const arr = [["Product", "Sales", "Cost", "Margin"]];
+    for (let i = 0; i < 50; i++) {
       arr.push([
-        String.fromCharCode(i + 65), // Product
-        Math.random() * max + min, // Sales
+        i, // Product
+        Math.random() * 1000, // Sales
+        Math.random() * 1000, // Cost
+        Math.random(), // Margin
       ]);
     }
     return [
@@ -27,7 +28,7 @@ const RangeBrushing = (props) => {
   const settings = {
     scales,
     components,
-    interactions: getInteractions(),
+    interactions,
   };
 
   // adding a style is optional
@@ -39,7 +40,7 @@ const RangeBrushing = (props) => {
 
   const renderChart = () => {
     const picassoChart = picasso({ style, renderer: { prio: ["canvas"] } }).chart({
-      element: document.querySelector("#rangeBrushing"),
+      element: document.querySelector("#lassoBrushing"),
       data: getData(),
       settings,
     });
@@ -47,19 +48,17 @@ const RangeBrushing = (props) => {
   };
 
   const resetSelection = () => {
-    chart.brush("range-example").end();
-    chart.component("rangeY").emit("rangeClear");
-    chart.component("rangeX").emit("rangeClear");
+    chart.brush("lasso-example").end();
   };
 
   useEffect(renderChart, []);
 
   return (
     <>
-      <div id="rangeBrushing"></div>
+      <div id="lassoBrushing"></div>
       <button onClick={resetSelection}>Reset selection</button>
     </>
   );
 };
 
-export default RangeBrushing;
+export default LassoBrushing;
